@@ -13,19 +13,7 @@ ft_isprint:    [OK]
 ft_toupper:    [OK] 
 ft_tolower:    [OK] 
 ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] 
-[crash]: your strrchr crash because it read too many bytes or attempt to write on s !
-Test code:
-	char *src = electric_alloc(10);
-
-	__builtin___strcpy_chk (src, "123456789", __builtin_object_size (src, 2 > 1 ? 1 : 0));
-	ft_strrchr(src, 'a');
-	src = electric_alloc_rev(10);
-	__builtin___strcpy_chk (src, "123456789", __builtin_object_size (src, 2 > 1 ? 1 : 0));
-	ft_strrchr(src, 'a');
-	exit(TEST_SUCCESS);
-
-
+ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strncmp:    [MISSING]
 ft_strlcpy:    [MISSING]
 ft_strlcat:    [MISSING]
