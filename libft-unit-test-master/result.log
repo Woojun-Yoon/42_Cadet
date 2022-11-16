@@ -1,0 +1,54 @@
+ft_memset:     
+ft_bzero:      [MISSING]
+ft_memcpy:     [MISSING]
+ft_memmove:    [MISSING]
+ft_memchr:     [MISSING]
+ft_memcmp:     [MISSING]
+ft_strlen:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_isalpha:    [OK] 
+ft_isdigit:    [OK] 
+ft_isalnum:    [OK] 
+ft_isascii:    [OK] 
+ft_isprint:    [OK] 
+ft_toupper:    [OK] 
+ft_tolower:    [OK] 
+ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] 
+[crash]: your strrchr crash because it read too many bytes or attempt to write on s !
+Test code:
+	char *src = electric_alloc(10);
+
+	__builtin___strcpy_chk (src, "123456789", __builtin_object_size (src, 2 > 1 ? 1 : 0));
+	ft_strrchr(src, 'a');
+	src = electric_alloc_rev(10);
+	__builtin___strcpy_chk (src, "123456789", __builtin_object_size (src, 2 > 1 ? 1 : 0));
+	ft_strrchr(src, 'a');
+	exit(TEST_SUCCESS);
+
+
+ft_strncmp:    [MISSING]
+ft_strlcpy:    [MISSING]
+ft_strlcat:    [MISSING]
+ft_strnstr:    [MISSING]
+ft_atoi:       [MISSING]
+ft_calloc:     [MISSING]
+ft_strdup:     [MISSING]
+ft_substr:     [MISSING]
+ft_strjoin:    [MISSING]
+ft_strtrim:    [MISSING]
+ft_split:      [MISSING]
+ft_itoa:       [MISSING]
+ft_strmapi:    [MISSING]
+ft_putchar_fd: [MISSING]
+ft_putstr_fd:  [MISSING]
+ft_putendl_fd: [MISSING]
+ft_putnbr_fd:  [MISSING]
+ft_lstnew:     [MISSING]
+ft_lstadd_front: [MISSING]
+ft_lstsize:    [MISSING]
+ft_lstlast:    [MISSING]
+ft_lstadd_back:[MISSING]
+ft_lstdelone:  [MISSING]
+ft_lstclear:   [MISSING]
+ft_lstiter:    [MISSING]
+ft_lstmap:     [MISSING]
