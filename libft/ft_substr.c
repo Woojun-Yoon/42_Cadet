@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 15:32:58 by woojun            #+#    #+#             */
-/*   Updated: 2022/11/16 20:41:35 by woojun           ###   ########.fr       */
+/*   Created: 2022/11/22 18:41:16 by woojun            #+#    #+#             */
+/*   Updated: 2022/11/23 14:49:53 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*save;
-	char	cache;
-	int		index;
+	char	*result;
+	size_t	index;
 
-	save = (char *)s;
-	cache = (unsigned char)c;
-	index = ft_strlen(s);
-	while (index > 0)
-	{
-		if (save[index] == cache)
-			return ((char *)save + index);
-		index--;
-	}
-	if (save[index] == cache)
-		return ((char *)save);
-	return ((char *)0);
+	if (s == NULL)
+		return (NULL);
+	if ((unsigned int)ft_strlen(s) < start)
+		return (ft_strdup(""));
+	index = ft_strlen(s + start);
+	if (index >= len)
+		index = len;
+	result = malloc(sizeof(char) * (index + 1));
+	if (!(result))
+		return (NULL);
+	ft_strlcpy(result, s + start, index + 1);
+	return (result);
 }

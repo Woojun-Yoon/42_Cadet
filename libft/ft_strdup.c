@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 15:32:58 by woojun            #+#    #+#             */
-/*   Updated: 2022/11/16 20:41:35 by woojun           ###   ########.fr       */
+/*   Created: 2022/11/22 18:25:46 by woojun            #+#    #+#             */
+/*   Updated: 2022/11/22 18:36:29 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strdup(const char *s1)
 {
-	char	*save;
-	char	cache;
+	char	*dst;
 	int		index;
 
-	save = (char *)s;
-	cache = (unsigned char)c;
-	index = ft_strlen(s);
-	while (index > 0)
+	dst = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!dst)
+		return (NULL);
+	index = 0;
+	while (s1[index] != '\0')
 	{
-		if (save[index] == cache)
-			return ((char *)save + index);
-		index--;
+		dst[index] = s1[index];
+		index++;
 	}
-	if (save[index] == cache)
-		return ((char *)save);
-	return ((char *)0);
+	dst[index] = '\0';
+	return (dst);
 }

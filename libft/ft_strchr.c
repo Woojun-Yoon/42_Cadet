@@ -6,7 +6,7 @@
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:13:29 by woojun            #+#    #+#             */
-/*   Updated: 2022/11/16 17:03:11 by woojun           ###   ########.fr       */
+/*   Updated: 2022/11/16 20:37:28 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != (char)c)
+	char	save;
+	int		index;
+
+	save = (unsigned char)c;
+	index = 0;
+	while (s[index] != '\0')
 	{
-		if (*s == '\0')
-			return (0);
-		s++;
+		if (s[index] == save)
+			return ((char *)s + index);
+		index++;
 	}
-	return ((char *)s);
+	if (s[index] == save)
+		return ((char *)s + index);
+	return ((char *)0);
 }

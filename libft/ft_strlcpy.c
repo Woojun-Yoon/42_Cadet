@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 15:32:58 by woojun            #+#    #+#             */
-/*   Updated: 2022/11/16 20:41:35 by woojun           ###   ########.fr       */
+/*   Created: 2022/11/21 19:42:18 by woojun            #+#    #+#             */
+/*   Updated: 2022/11/21 19:47:29 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*save;
-	char	cache;
-	int		index;
+	size_t	src_len;
+	size_t	index;
 
-	save = (char *)s;
-	cache = (unsigned char)c;
-	index = ft_strlen(s);
-	while (index > 0)
+	src_len = ft_strlen(src);
+	if (dstsize == 0)
+		return (src_len);
+	index = 0;
+	while (src[index] != '\0' && index < (dstsize - 1))
 	{
-		if (save[index] == cache)
-			return ((char *)save + index);
-		index--;
+		dst[index] = src[index];
+		index++;
 	}
-	if (save[index] == cache)
-		return ((char *)save);
-	return ((char *)0);
+	dst[index] = '\0';
+	return (src_len);
 }

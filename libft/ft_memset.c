@@ -6,13 +6,20 @@
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:36:47 by woojun            #+#    #+#             */
-/*   Updated: 2022/11/16 15:03:24 by woojun           ###   ########.fr       */
+/*   Updated: 2022/11/21 15:34:16 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void*	ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	return ;
+	unsigned char	*dest;
+	unsigned char	cache;
+
+	dest = b;
+	cache = (unsigned char)c;
+	while (len--)
+		*dest++ = cache;
+	return (b);
 }

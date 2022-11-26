@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 15:32:58 by woojun            #+#    #+#             */
-/*   Updated: 2022/11/16 20:41:35 by woojun           ###   ########.fr       */
+/*   Created: 2022/11/21 22:03:54 by woojun            #+#    #+#             */
+/*   Updated: 2022/11/22 10:59:27 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*save;
-	char	cache;
-	int		index;
+	unsigned char	*cache1;
+	unsigned char	*cache2;
+	size_t			index;
 
-	save = (char *)s;
-	cache = (unsigned char)c;
-	index = ft_strlen(s);
-	while (index > 0)
+	cache1 = (unsigned char *)s1;
+	cache2 = (unsigned char *)s2;
+	index = 0;
+	while ((index < n) && (cache1[index] || cache2[index]))
 	{
-		if (save[index] == cache)
-			return ((char *)save + index);
-		index--;
+		if (cache1[index] != cache2[index])
+			return (cache1[index] - cache2[index]);
+		index++;
 	}
-	if (save[index] == cache)
-		return ((char *)save);
-	return ((char *)0);
+	return (0);
 }
