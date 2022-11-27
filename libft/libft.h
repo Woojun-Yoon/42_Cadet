@@ -6,7 +6,7 @@
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:00:04 by woojun            #+#    #+#             */
-/*   Updated: 2022/11/25 18:25:50 by woojun           ###   ########.fr       */
+/*   Updated: 2022/11/27 17:16:49 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
+/*
+ *	PART1 AND PART2
+ */
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_tolower(int c);
@@ -61,5 +63,19 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+/*
+ *	BONUS PART
+ */
+int		ft_lstsize(t_list *lst);
+
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
 
 #endif

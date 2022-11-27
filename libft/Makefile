@@ -6,7 +6,7 @@
 #    By: woojun <woojun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 15:31:37 by woojun            #+#    #+#              #
-#    Updated: 2022/11/24 18:06:31 by woojun           ###   ########.fr        #
+#    Updated: 2022/11/27 17:16:18 by woojun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,27 +57,47 @@ PART_TWO_SRCS = ./ft_substr.c		\
 				./ft_putendl_fd.c	\
 				./ft_putnbr_fd.c	\
 
-# PART_BONUS = 
+PART_BONUS = 	./ft_lstnew.c		\
+				./ft_lstadd_front.c	\
+				./ft_lstsize.c		\
+				./ft_lstlast.c		\
+				./ft_lstadd_back.c	\
+				./ft_lstdelone.c	\
+				./ft_lstclear.c		\
+				./ft_lstiter.c		\
+				./ft_lstmap.c		\
 
-SRCS = 	$(PART_ONE_SRCS)\
-		$(PART_TWO_SRCS)\
+SRCS = 	$(PART_ONE_SRCS)			\
+		$(PART_TWO_SRCS)			\
 
 OBJS = $(SRCS:.c=.o)
+
+OBJS_BONUS = $(PART_BONUS:.c=.o)
+
+ifdef BONUS
+	ALL_OBJS = $(OBJS) $(OBJS_BONUS)
+else
+	ALL_OBJS = $(OBJS)
+endif
 
 .c.o : $(SRCS)
 		$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME) : $(OBJS)
+$(NAME) : $(ALL_OBJS)
 		$(AR) $(ARFLAGS) $@ $^
 
 all : $(NAME)
+# sleep 1 was check for tester
+bonus :
+		sleep 1
+		make BONUS=1 all
 
 clean : 
-		$(RM) $(RMFALGS) $(OBJS)
+		$(RM) $(RMFALGS) $(OBJS) $(OBJS_BONUS)
 
 fclean : clean
 		$(RM) $(RMFALGS) $(NAME)
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : bonus all clean fclean re
