@@ -6,7 +6,7 @@
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:37:07 by woojun            #+#    #+#             */
-/*   Updated: 2022/12/26 20:45:33 by woojun           ###   ########.fr       */
+/*   Updated: 2022/12/28 16:45:21 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	save;
-	size_t	index;
+	unsigned char	save;
+	size_t			index;
 
 	save = (unsigned char)c;
 	index = 0;
