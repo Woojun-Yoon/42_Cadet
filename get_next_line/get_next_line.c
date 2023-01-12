@@ -6,11 +6,13 @@
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:31:33 by woojun            #+#    #+#             */
-/*   Updated: 2022/12/28 16:45:24 by woojun           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:54:35 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "stdio.h"
+#include "fcntl.h"
 
 static void	ft_free(char **p)
 {
@@ -54,6 +56,7 @@ static ssize_t	ft_read_file(int fd, char **buffer, char **cache)
 		old_cache = *cache;
 		*cache = ft_strjoin(old_cache, *buffer);
 		free(old_cache);
+		old_cache = NULL;
 	}
 	return (byte);
 }
@@ -92,13 +95,15 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	char		*result;
 
-	if (0 > fd || 256 < fd || BUFFER_SIZE <= 0)
+	if (0 > fd || BUFFER_SIZE <= 0)
+		return (NULL);
+	if (!cache[fd])
+		cache[fd] = ft_strdup("");
+	if (!cache[fd])
 		return (NULL);
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!(buffer))
 		return (NULL);
-	if (!cache[fd])
-		cache[fd] = ft_strdup("");
 	result = ft_get_line(fd, &buffer, &cache[fd]);
 	free(buffer);
 	return (result);
@@ -112,3 +117,25 @@ char	*get_next_line(int fd)
  * 
  * 
  */
+
+/*
+ * FOR TEST
+ * MAIN FUNCTION
+ * GL
+ */
+
+int	main(void)
+{
+	char	*result;
+	int		fd;
+
+	fd = open("Your text.txt", O_RDONLY);
+	result = "";
+	while (result)
+	{	
+		result = get_next_line(fd);
+		printf("> %s\n", result);
+		free(result);
+	}
+	return (0);
+}

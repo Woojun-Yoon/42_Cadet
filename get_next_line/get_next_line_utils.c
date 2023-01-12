@@ -6,7 +6,7 @@
 /*   By: woojun <woojun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:37:07 by woojun            #+#    #+#             */
-/*   Updated: 2022/12/28 16:45:21 by woojun           ###   ########.fr       */
+/*   Updated: 2023/01/03 18:31:49 by woojun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ char	*ft_strchr(const char *s, int c)
 	unsigned char	save;
 	size_t			index;
 
+	if (!(s))
+		return (NULL);
 	save = (unsigned char)c;
 	index = 0;
 	while (s[index])
@@ -80,7 +82,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (s[index] == save)
 		return ((char *)s + index);
-	return ((char *)0);
+	return (NULL);
 }
 
 char	*ft_strdup(const char *s1)
@@ -88,6 +90,8 @@ char	*ft_strdup(const char *s1)
 	char	*dst;
 	size_t	index;
 
+	if (!(s1))
+		return (NULL);
 	dst = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!dst)
 		return (NULL);
